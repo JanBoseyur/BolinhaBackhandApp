@@ -59,7 +59,7 @@ app.post('/enviar-correo', async (req, res) => {
 
 app.get('/jugadores', async (req, res) => {
   try {
-    const result = await pool.query('SELECT nombre, edad, ranking, puntos, flag, nacionalidad, trofeos, imagen1 FROM jugadores ORDER BY ranking ASC');
+    const result = await pool.query('SELECT id, nombre, edad, ranking, puntos, flag, nacionalidad, trofeos, imagen1 FROM jugadores ORDER BY ranking ASC');
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -67,6 +67,22 @@ app.get('/jugadores', async (req, res) => {
   }
 });
 
+app.get('/jugadores/:id', async (req, res) => {
+  const jugadorId = req.params.id; // ID del jugador desde la URL
+
+  try {
+    const result = await pool.query('SELECT * FROM jugadores WHERE id = $1', [jugadorId]);
+    
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]); // Devolver los datos del jugador
+    } else {
+      res.status(404).json({ error: 'Jugador no encontrado' });
+    }
+  } catch (err) {
+    console.error('Error en la consulta:', err);
+    res.status(500).json({ error: 'Error al obtener los datos del jugador' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

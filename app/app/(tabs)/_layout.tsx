@@ -36,7 +36,7 @@ export default function TabLayout() {
     >
 
       <Tabs.Screen
-        name = "explore"
+        name = "ranking"
         options = {{
           title: 'Ranking',
           tabBarIcon: ({ color }) => (
@@ -48,7 +48,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name = "index"
         options = {{
-          title: 'Inicio',
+          title: 'Home',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name = "home" size = {28} color = {color} />
           ),
