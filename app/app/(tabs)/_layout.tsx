@@ -18,18 +18,15 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
+        
         tabBarStyle: {
-          height: 80, // Aumenta la altura de la barra para acomodar el texto
-          paddingBottom: 10, // Agrega un poco de espacio inferior
+          height: 80, 
+          paddingBottom: 10,
         },
 
         tabBarLabelStyle: {
-          fontSize: 12, // Tamaño del texto
-          marginTop: 4, // Ajusta la posición del texto debajo del ícono
-        },
-
-        tabBarIconStyle: {
-          marginTop: 10,
+          fontSize: 12, 
+          marginTop: 4, 
         },
 
       }}
@@ -38,6 +35,11 @@ export default function TabLayout() {
       <Tabs.Screen
         name = "ranking"
         options = {{
+
+          tabBarIconStyle: {
+            marginTop: 10,
+          },
+
           title: 'Ranking',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name = "podium" size = {28} color = {color} />
@@ -48,9 +50,33 @@ export default function TabLayout() {
       <Tabs.Screen
         name = "index"
         options = {{
+
+          tabBarIconStyle: {
+
+            margin: 0,
+            width: 70,
+            height: 68,
+          },
+
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name = "home" size = {28} color = {color} />
+            <MaterialCommunityIcons name = "home" size = {45} color = {color} />
+          ),
+          tabBarLabel: () => null,
+        }}
+      />
+
+      <Tabs.Screen
+        name = "partidos"
+        options = {{
+
+          tabBarIconStyle: {
+            marginTop: 10,
+          },
+
+          title: 'Partidos',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name = "tennis" size = {28} color = {color} />
           ),
         }}
       />

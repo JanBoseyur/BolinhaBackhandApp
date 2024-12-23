@@ -16,8 +16,8 @@ app.use(express.json());
 const pool = new Pool({
   user: 'postgres',     // Usuario de PostgreSQL
   host: 'localhost',    // Servidor de PostgreSQL
-  database: 'postgresql', // Nombre de la base de datos
-  password: 'seba1234', // Contraseña de PostgreSQL
+  database: 'postgres', // Nombre de la base de datos
+  password: '1234', // Contraseña de PostgreSQL
   port: 5432,           // Puerto de PostgreSQL
 });
 
@@ -59,7 +59,7 @@ app.post('/enviar-correo', async (req, res) => {
 
 app.get('/jugadores', async (req, res) => {
   try {
-    const result = await pool.query('SELECT id, nombre, edad, ranking, puntos, flag, nacionalidad, trofeos, imagen1 FROM jugadores ORDER BY ranking ASC');
+    const result = await pool.query('SELECT id, nombre, edad, ranking, puntos, flag, nacionalidad, trofeos, imagen1, imagen2, descripcion FROM jugadores ORDER BY ranking ASC');
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching products:', error);
